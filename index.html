@@ -63,10 +63,10 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 10%;
-            background: radial-gradient(circle at 80% 50%, rgba(0, 229, 255, 0.1), transparent),
-                        linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
-                        url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)),
+                        url('https://media.discordapp.net/attachments/1464266079655170051/1466798439710064928/image.png?ex=697e0dff&is=697cbc7f&hm=782ba6d03f24350525c9add2b0577b7d4c42364247f433bcae21815ec873c277&');
             background-size: cover;
+            background-position: center;
             background-attachment: fixed;
             gap: 40px;
         }
@@ -74,6 +74,7 @@
         .hero-left {
             flex: 1.2;
             animation: slideInLeft 1s ease-out;
+            z-index: 2;
         }
 
         .version-tag {
@@ -109,10 +110,11 @@
             border-left: 5px solid var(--primary);
             padding-left: 20px;
             max-width: 550px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .ip-wrapper {
-            background: rgba(255,255,255,0.05);
+            background: rgba(0,0,0,0.5);
             border: 2px solid var(--primary);
             padding: 18px 30px;
             border-radius: 15px;
@@ -120,8 +122,6 @@
             align-items: center;
             gap: 15px;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
             backdrop-filter: blur(10px);
         }
 
@@ -132,7 +132,6 @@
             box-shadow: 0 0 40px var(--glow-color);
         }
 
-        .ip-wrapper i { font-size: 1.4rem; }
         .ip-address { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.5rem; }
 
         .hero-right {
@@ -141,18 +140,18 @@
             justify-content: center;
             align-items: center;
             animation: zoomIn 1.2s ease-out;
+            z-index: 2;
         }
 
-        /* LOGO CHUYỂN ĐỘNG LÊN XUỐNG TẠI ĐÂY */
         .server-logo {
             width: 100%;
-            max-width: 600px;
-            filter: drop-shadow(0 0 50px var(--glow-color));
-            animation: floating 3s ease-in-out infinite;
+            max-width: 550px;
+            filter: drop-shadow(0 0 30px var(--glow-color));
+            animation: floating 4s ease-in-out infinite;
         }
 
         .game-modes {
-            padding: 100px 10%;
+            padding: 80px 10%;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
@@ -165,13 +164,11 @@
             border-radius: 25px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
         }
 
         .card:hover {
             transform: translateY(-15px);
             border-color: var(--primary);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
         .card i {
@@ -181,16 +178,66 @@
             text-shadow: 0 0 15px var(--glow-color);
         }
 
-        .card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            font-family: 'Montserrat', sans-serif;
+        /* PHẦN GALLERY */
+        .gallery-container {
+            padding: 80px 10%;
+            background: var(--bg);
+            text-align: center;
         }
+
+        .gallery-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        .slider-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider img {
+            width: 100%;
+            flex-shrink: 0;
+            object-fit: cover;
+            aspect-ratio: 16/9;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 229, 255, 0.3);
+            border: none;
+            color: white;
+            padding: 20px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            border-radius: 50%;
+            margin: 0 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .slider-btn:hover { background: var(--primary); color: #000; }
+        .prev-btn { left: 0; }
+        .next-btn { right: 0; }
 
         /* KEYFRAMES */
         @keyframes floating {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-30px); }
+            50% { transform: translateY(-25px); }
             100% { transform: translateY(0px); }
         }
 
@@ -216,20 +263,14 @@
             transform: translateX(-50%);
             font-weight: 800;
             z-index: 9999;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         #notification.show { visibility: visible; animation: popUp 0.4s ease-out; }
 
-        @keyframes popUp {
-            0% { bottom: 0; opacity: 0; }
-            100% { bottom: 40px; opacity: 1; }
-        }
-
         footer {
             text-align: center;
             padding: 60px;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.8);
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
@@ -239,10 +280,8 @@
                 text-align: center;
                 padding: 100px 5% 50px;
             }
-            .hero-left { text-align: center; }
-            .description { border-left: none; padding: 0; margin: 0 auto 40px; }
-            .server-logo { max-width: 350px; }
-            h1 { font-size: 3.5rem; }
+            .server-logo { max-width: 320px; }
+            .slider-btn { padding: 10px; font-size: 1rem; }
         }
     </style>
 </head>
@@ -265,11 +304,11 @@
                 <i class="fas fa-bolt"></i>
                 <span class="ip-address" id="server-ip">nightcoresmp.xyz:30077</span>
             </div>
-            <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.6;">Nhấn để sao chép địa chỉ tham gia ngay!</p>
+            <p style="margin-top: 15px; font-size: 0.85rem; opacity: 0.8;">Nhấn để sao chép địa chỉ tham gia ngay!</p>
         </div>
 
         <div class="hero-right">
-            <img src="https://media.discordapp.net/attachments/1464266079655170051/1464988571298566216/IMG_1353.png?ex=697d672d&is=697c15ad&hm=99ae7a16e6414bd753e461f4de2856d00f102816c7fef1512716e9d10c78a481&=&format=webp&quality=lossless&width=971&height=971" 
+            <img src="https://media.discordapp.net/attachments/1464266079655170051/1464988571298566216/IMG_1353.png?ex=697d672d&is=697c15ad&hm=99ae7a16e6414bd753e461f4de2856d00f102816c7fef1512716e9d10c78a481&" 
                  class="server-logo" 
                  alt="Nightcore SMP Logo">
         </div>
@@ -293,7 +332,24 @@
         </div>
     </div>
 
-    <div style="text-align: center; padding: 80px 20px;">
+    <section class="gallery-container">
+        <h2 class="gallery-title">KHÁM PHÁ SERVER</h2>
+        <div class="slider-wrapper">
+            <button class="slider-btn prev-btn" onclick="moveSlider(-1)"><i class="fas fa-chevron-left"></i></button>
+            <div class="slider" id="imageSlider">
+                <img src="https://media.discordapp.net/attachments/1464266079655170051/1466798681867948128/2026-01-25_22.59.48.png?ex=697e0e39&is=697cbcb9&hm=a5f720244ff06e4a4daf85f587d98bfcdd2140d5b14799d627e2d22e7824c084&" alt="Server 1">
+                <img src="https://media.discordapp.net/attachments/1464266079655170051/1466798682337841152/2026-01-25_22.59.28.png?ex=697e0e39&is=697cbcb9&hm=3e9db0022c6be39d1a35a16fcb89ae864f76bb59dd95514855804718acf10aa6&" alt="Server 2">
+                <img src="https://media.discordapp.net/attachments/1464266079655170051/1466798682828443825/2026-01-25_22.59.08.png?ex=697e0e39&is=697cbcb9&hm=c73e6f0129e39a12d3a04a2e84934a256e0aec7a5539cdcb8bec935ef0deb2f7&" alt="Server 3">
+                <img src="https://media.discordapp.net/attachments/1464266079655170051/1466798689447051345/2026-01-25_22.58.33.png?ex=697e0e3b&is=697cbcbb&hm=5099c4e1df021b148b41596a5dc7651eb9679b3705ba9f39319a52a7d27861a5&" alt="Server 4">
+                <img src="https://media.discordapp.net/attachments/1464266079655170051/1466798690063876197/2026-01-25_22.58.11.png?ex=697e0e3b&is=697cbcbb&hm=089544434cc55eca665fa8ba4769b4a66f5b9030d44664a98ec692ec6546a165&" alt="Server 5">
+                <img src="https://media.discordapp.net/attachments/1464266079655170051/1466798691351527538/2026-01-25_22.57.48.png?ex=697e0e3b&is=697cbcbb&hm=59cc718ffaaaac054a6f855dca3aa7f90d22bc30ebcce575e55273ff74b88ff7&" alt="Server 6">
+                <img src="https://media.discordapp.net/attachments/1464266079655170051/1466801351445971098/2026-01-30_12.05.08_2.png?ex=697e10b6&is=697cbf36&hm=8469d21728a9d3008925a7fed8678408b6347f3cc1a64dfdeb1074ed17737c28&" alt="Server 7">
+            </div>
+            <button class="slider-btn next-btn" onclick="moveSlider(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <div style="text-align: center; padding: 80px 20px; background: var(--bg);">
         <h2 style="margin-bottom: 30px; font-family: 'Montserrat'; font-size: 2.2rem;">KẾT NỐI VỚI CHÚNG TÔI</h2>
         <a href="https://discord.nightcoresmp.xyz" target="_blank" style="text-decoration: none; background: #5865F2; color: white; padding: 20px 50px; border-radius: 15px; font-weight: 800; font-size: 1.2rem; display: inline-flex; align-items: center; gap: 12px; box-shadow: 0 15px 30px rgba(88, 101, 242, 0.4);">
             <i class="fab fa-discord"></i> THAM GIA DISCORD
@@ -302,12 +358,24 @@
 
     <footer>
         <p>&copy; 2024 NightcoreSMP Community. All Rights Reserved.</p>
-        <p style="font-size: 0.8rem; opacity: 0.5; margin-top: 10px;">Minecraft is a trademark of Mojang Synergies AB.</p>
     </footer>
 
     <div id="notification">Đã sao chép địa chỉ IP!</div>
 
     <script>
+        // Slider Logic
+        let currentSlide = 0;
+        const slider = document.getElementById('imageSlider');
+        const totalSlides = slider.children.length;
+
+        function moveSlider(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Tự động lướt sau 5 giây
+        setInterval(() => moveSlider(1), 5000);
+
         function toggleTheme() {
             const body = document.body;
             const icon = document.getElementById('theme-icon');
